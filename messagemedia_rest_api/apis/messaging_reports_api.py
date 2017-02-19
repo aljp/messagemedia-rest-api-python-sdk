@@ -48,6 +48,311 @@ class MessagingReportsApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def get_async_report_by_id(self, report_id, **kwargs):
+        """
+        Lists an asynchronous report.
+        This endpoints lists metadata of a requested asynchronous report.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_report_by_id(report_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str report_id: Unique ID of the async report (required)
+        :return: AsyncReport
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_async_report_by_id_with_http_info(report_id, **kwargs)
+        else:
+            (data) = self.get_async_report_by_id_with_http_info(report_id, **kwargs)
+            return data
+
+    def get_async_report_by_id_with_http_info(self, report_id, **kwargs):
+        """
+        Lists an asynchronous report.
+        This endpoints lists metadata of a requested asynchronous report.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_report_by_id_with_http_info(report_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str report_id: Unique ID of the async report (required)
+        :return: AsyncReport
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['report_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_async_report_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'report_id' is set
+        if ('report_id' not in params) or (params['report_id'] is None):
+            raise ValueError("Missing the required parameter `report_id` when calling `get_async_report_by_id`")
+
+        resource_path = '/reporting/async_reports/{report_id}'.replace('{format}', 'json')
+        path_params = {}
+        if 'report_id' in params:
+            path_params['report_id'] = params['report_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReport',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def get_async_report_data_by_id(self, report_id, **kwargs):
+        """
+        Gets the data of an asynchronous report.
+        This endpoints gets the data of an asynchronous report as a download.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_report_data_by_id(report_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str report_id: Unique ID of the async report (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_async_report_data_by_id_with_http_info(report_id, **kwargs)
+        else:
+            (data) = self.get_async_report_data_by_id_with_http_info(report_id, **kwargs)
+            return data
+
+    def get_async_report_data_by_id_with_http_info(self, report_id, **kwargs):
+        """
+        Gets the data of an asynchronous report.
+        This endpoints gets the data of an asynchronous report as a download.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_report_data_by_id_with_http_info(report_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str report_id: Unique ID of the async report (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['report_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_async_report_data_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'report_id' is set
+        if ('report_id' not in params) or (params['report_id'] is None):
+            raise ValueError("Missing the required parameter `report_id` when calling `get_async_report_data_by_id`")
+
+        resource_path = '/reporting/async_reports/{report_id}/data'.replace('{format}', 'json')
+        path_params = {}
+        if 'report_id' in params:
+            path_params['report_id'] = params['report_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='file',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def get_async_reports(self, **kwargs):
+        """
+        Gets a single asynchronous report.
+        This endpoint lists metadata about requested async reports.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_reports(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: InlineResponse200
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_async_reports_with_http_info(**kwargs)
+        else:
+            (data) = self.get_async_reports_with_http_info(**kwargs)
+            return data
+
+    def get_async_reports_with_http_info(self, **kwargs):
+        """
+        Gets a single asynchronous report.
+        This endpoint lists metadata about requested async reports.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_async_reports_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: InlineResponse200
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_async_reports" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/reporting/async_reports'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='InlineResponse200',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
     def get_delivery_reports_detail(self, end_date, start_date, **kwargs):
         """
         Returns a list of delivery reports
@@ -63,9 +368,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -106,9 +411,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -268,10 +573,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -310,10 +615,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -451,6 +756,136 @@ class MessagingReportsApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
+    def get_metadata_keys(self, message_type, start_date, end_date, **kwargs):
+        """
+        Returns a list of metadata keys
+        Returns a list of all metadata keys used for the specified message type during the specified time. Results are limited to 100 keys.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_metadata_keys(message_type, start_date, end_date, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str message_type: Message type. Possible values are sent messages, received messages and delivery receipts. (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str timezone: The timezone to use for the context of the request. If provided this will be used as the timezone for the start date and end date parameters, and all datetime fields returns in the response. The timezone should be provided as a IANA (Internet Assigned Numbers Authority) time zone database zone name, i.e. 'Australia/Melbourne'.
+        :return: MetadataKeysResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_metadata_keys_with_http_info(message_type, start_date, end_date, **kwargs)
+        else:
+            (data) = self.get_metadata_keys_with_http_info(message_type, start_date, end_date, **kwargs)
+            return data
+
+    def get_metadata_keys_with_http_info(self, message_type, start_date, end_date, **kwargs):
+        """
+        Returns a list of metadata keys
+        Returns a list of all metadata keys used for the specified message type during the specified time. Results are limited to 100 keys.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_metadata_keys_with_http_info(message_type, start_date, end_date, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str message_type: Message type. Possible values are sent messages, received messages and delivery receipts. (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str timezone: The timezone to use for the context of the request. If provided this will be used as the timezone for the start date and end date parameters, and all datetime fields returns in the response. The timezone should be provided as a IANA (Internet Assigned Numbers Authority) time zone database zone name, i.e. 'Australia/Melbourne'.
+        :return: MetadataKeysResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['message_type', 'start_date', 'end_date', 'accounts', 'timezone']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_metadata_keys" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'message_type' is set
+        if ('message_type' not in params) or (params['message_type'] is None):
+            raise ValueError("Missing the required parameter `message_type` when calling `get_metadata_keys`")
+        # verify the required parameter 'start_date' is set
+        if ('start_date' not in params) or (params['start_date'] is None):
+            raise ValueError("Missing the required parameter `start_date` when calling `get_metadata_keys`")
+        # verify the required parameter 'end_date' is set
+        if ('end_date' not in params) or (params['end_date'] is None):
+            raise ValueError("Missing the required parameter `end_date` when calling `get_metadata_keys`")
+
+        if 'accounts' in params and len(params['accounts']) > 200:
+            raise ValueError("Invalid value for parameter `accounts` when calling `get_metadata_keys`, length must be less than or equal to `200`")
+        if 'accounts' in params and len(params['accounts']) < 1:
+            raise ValueError("Invalid value for parameter `accounts` when calling `get_metadata_keys`, length must be greater than or equal to `1`")
+        resource_path = '/reporting/{messageType}/metadata/keys'.replace('{format}', 'json')
+        path_params = {}
+        if 'message_type' in params:
+            path_params['messageType'] = params['message_type']
+
+        query_params = {}
+        if 'start_date' in params:
+            query_params['start_date'] = params['start_date']
+        if 'end_date' in params:
+            query_params['end_date'] = params['end_date']
+        if 'accounts' in params:
+            query_params['accounts'] = params['accounts']
+        if 'timezone' in params:
+            query_params['timezone'] = params['timezone']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='MetadataKeysResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
     def get_received_messages_detail(self, end_date, start_date, **kwargs):
         """
         Returns a list message received
@@ -466,9 +901,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str action: Filter results by the action that was invoked for this message.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -508,9 +943,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str action: Filter results by the action that was invoked for this message.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -659,10 +1094,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -699,10 +1134,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
         :param str message_format: Filter results by message format.
@@ -841,9 +1276,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param bool delivery_report: Filter results by delivery report.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -885,9 +1320,9 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param bool delivery_report: Filter results by delivery report.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -1050,10 +1485,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param bool delivery_report: Filter results by delivery report.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -1092,10 +1527,10 @@ class MessagingReportsApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param datetime end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
+        :param str end_date: End date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
         :param str group_by: Field to group results set by (required)
-        :param datetime start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. (required)
-        :param str accounts: Filter results by specific accounts. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
+        :param str start_date: Start date time for report window. By default, the timezone for this parameter will be taken from the account settings for the account associated with the credentials used to make the request, or the account included in the Account parameter. This can be overridden using the timezone parameter per request. The date must be in the format of \"yyyy-MM-dd'T'HH:mm:ss\", e.g. \"2017-02-10T13:30:00\". (required)
+        :param str accounts: Filter results by a specific account. By default results will be returned for the account associated with the authentication credentials and all sub accounts.
         :param bool delivery_report: Filter results by delivery report.
         :param str destination_address_country: Filter results by destination address country.
         :param str destination_address: Filter results by destination address.
@@ -1225,6 +1660,630 @@ class MessagingReportsApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='SummaryReport',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_async_delivery_reports_detail(self, async_delivery_report_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all delivery reports received during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_async_delivery_reports_detail(async_delivery_report_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliveryReportDetailRequest async_delivery_report_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_async_delivery_reports_detail_with_http_info(async_delivery_report_detail_request, **kwargs)
+        else:
+            (data) = self.submit_async_delivery_reports_detail_with_http_info(async_delivery_report_detail_request, **kwargs)
+            return data
+
+    def submit_async_delivery_reports_detail_with_http_info(self, async_delivery_report_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all delivery reports received during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_async_delivery_reports_detail_with_http_info(async_delivery_report_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliveryReportDetailRequest async_delivery_report_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_delivery_report_detail_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_async_delivery_reports_detail" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_delivery_report_detail_request' is set
+        if ('async_delivery_report_detail_request' not in params) or (params['async_delivery_report_detail_request'] is None):
+            raise ValueError("Missing the required parameter `async_delivery_report_detail_request` when calling `submit_async_delivery_reports_detail`")
+
+        resource_path = '/reporting/delivery_reports/detail/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_delivery_report_detail_request' in params:
+            body_params = params['async_delivery_report_detail_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_delivery_reports_summary(self, async_delivery_reports_summary_request, **kwargs):
+        """
+        Submits a summarised report of delivery reports
+        Submits a request to generate an async summary report of all delivery reports during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_delivery_reports_summary(async_delivery_reports_summary_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliveryReportsSummaryRequest async_delivery_reports_summary_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_delivery_reports_summary_with_http_info(async_delivery_reports_summary_request, **kwargs)
+        else:
+            (data) = self.submit_delivery_reports_summary_with_http_info(async_delivery_reports_summary_request, **kwargs)
+            return data
+
+    def submit_delivery_reports_summary_with_http_info(self, async_delivery_reports_summary_request, **kwargs):
+        """
+        Submits a summarised report of delivery reports
+        Submits a request to generate an async summary report of all delivery reports during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_delivery_reports_summary_with_http_info(async_delivery_reports_summary_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliveryReportsSummaryRequest async_delivery_reports_summary_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_delivery_reports_summary_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_delivery_reports_summary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_delivery_reports_summary_request' is set
+        if ('async_delivery_reports_summary_request' not in params) or (params['async_delivery_reports_summary_request'] is None):
+            raise ValueError("Missing the required parameter `async_delivery_reports_summary_request` when calling `submit_delivery_reports_summary`")
+
+        resource_path = '/reporting/delivery_reports/summary/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_delivery_reports_summary_request' in params:
+            body_params = params['async_delivery_reports_summary_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_received_messages_detail(self, async_received_messages_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all received messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_received_messages_detail(async_received_messages_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncReceivedMessagesDetailRequest async_received_messages_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_received_messages_detail_with_http_info(async_received_messages_detail_request, **kwargs)
+        else:
+            (data) = self.submit_received_messages_detail_with_http_info(async_received_messages_detail_request, **kwargs)
+            return data
+
+    def submit_received_messages_detail_with_http_info(self, async_received_messages_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all received messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_received_messages_detail_with_http_info(async_received_messages_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncReceivedMessagesDetailRequest async_received_messages_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_received_messages_detail_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_received_messages_detail" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_received_messages_detail_request' is set
+        if ('async_received_messages_detail_request' not in params) or (params['async_received_messages_detail_request'] is None):
+            raise ValueError("Missing the required parameter `async_received_messages_detail_request` when calling `submit_received_messages_detail`")
+
+        resource_path = '/reporting/received_messages/detail/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_received_messages_detail_request' in params:
+            body_params = params['async_received_messages_detail_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_received_messages_summary(self, async_received_messages_summary_request, **kwargs):
+        """
+        Submits a summarised report of received messages
+        Submits a request to generate an async summary report of all received messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_received_messages_summary(async_received_messages_summary_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncReceivedMessagesSummaryRequest async_received_messages_summary_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_received_messages_summary_with_http_info(async_received_messages_summary_request, **kwargs)
+        else:
+            (data) = self.submit_received_messages_summary_with_http_info(async_received_messages_summary_request, **kwargs)
+            return data
+
+    def submit_received_messages_summary_with_http_info(self, async_received_messages_summary_request, **kwargs):
+        """
+        Submits a summarised report of received messages
+        Submits a request to generate an async summary report of all received messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_received_messages_summary_with_http_info(async_received_messages_summary_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncReceivedMessagesSummaryRequest async_received_messages_summary_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_received_messages_summary_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_received_messages_summary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_received_messages_summary_request' is set
+        if ('async_received_messages_summary_request' not in params) or (params['async_received_messages_summary_request'] is None):
+            raise ValueError("Missing the required parameter `async_received_messages_summary_request` when calling `submit_received_messages_summary`")
+
+        resource_path = '/reporting/received_messages/summary/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_received_messages_summary_request' in params:
+            body_params = params['async_received_messages_summary_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_sent_messages_detail(self, async_sent_messages_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all sent messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_sent_messages_detail(async_sent_messages_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncSentMessagesDetailRequest async_sent_messages_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_sent_messages_detail_with_http_info(async_sent_messages_detail_request, **kwargs)
+        else:
+            (data) = self.submit_sent_messages_detail_with_http_info(async_sent_messages_detail_request, **kwargs)
+            return data
+
+    def submit_sent_messages_detail_with_http_info(self, async_sent_messages_detail_request, **kwargs):
+        """
+        Submits a request to generate an async detail report
+        Submits a request to generate an async detail report of all sent messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_sent_messages_detail_with_http_info(async_sent_messages_detail_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncSentMessagesDetailRequest async_sent_messages_detail_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_sent_messages_detail_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_sent_messages_detail" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_sent_messages_detail_request' is set
+        if ('async_sent_messages_detail_request' not in params) or (params['async_sent_messages_detail_request'] is None):
+            raise ValueError("Missing the required parameter `async_sent_messages_detail_request` when calling `submit_sent_messages_detail`")
+
+        resource_path = '/reporting/sent_messages/detail/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_sent_messages_detail_request' in params:
+            body_params = params['async_sent_messages_detail_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def submit_sent_messages_summary(self, async_delivery_sent_messages_request, **kwargs):
+        """
+        Submits a summarised report of sent messages
+        Submits a request to generate an async summary report of all sent messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_sent_messages_summary(async_delivery_sent_messages_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliverySentMessagesRequest async_delivery_sent_messages_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.submit_sent_messages_summary_with_http_info(async_delivery_sent_messages_request, **kwargs)
+        else:
+            (data) = self.submit_sent_messages_summary_with_http_info(async_delivery_sent_messages_request, **kwargs)
+            return data
+
+    def submit_sent_messages_summary_with_http_info(self, async_delivery_sent_messages_request, **kwargs):
+        """
+        Submits a summarised report of sent messages
+        Submits a request to generate an async summary report of all sent messages during the specified time.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.submit_sent_messages_summary_with_http_info(async_delivery_sent_messages_request, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param AsyncDeliverySentMessagesRequest async_delivery_sent_messages_request:  (required)
+        :return: AsyncReportResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['async_delivery_sent_messages_request']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method submit_sent_messages_summary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'async_delivery_sent_messages_request' is set
+        if ('async_delivery_sent_messages_request' not in params) or (params['async_delivery_sent_messages_request'] is None):
+            raise ValueError("Missing the required parameter `async_delivery_sent_messages_request` when calling `submit_sent_messages_summary`")
+
+        resource_path = '/reporting/sent_messages/summary/async'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'async_delivery_sent_messages_request' in params:
+            body_params = params['async_delivery_sent_messages_request']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['basic']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='AsyncReportResponse',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

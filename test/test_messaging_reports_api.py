@@ -41,6 +41,30 @@ class TestMessagingReportsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_get_async_report_by_id(self):
+        """
+        Test case for get_async_report_by_id
+
+        Lists an asynchronous report.
+        """
+        pass
+
+    def test_get_async_report_data_by_id(self):
+        """
+        Test case for get_async_report_data_by_id
+
+        Gets the data of an asynchronous report.
+        """
+        pass
+
+    def test_get_async_reports(self):
+        """
+        Test case for get_async_reports
+
+        Gets a single asynchronous report.
+        """
+        pass
+
     def test_get_delivery_reports_detail(self):
         """
         Test case for get_delivery_reports_detail
@@ -54,6 +78,14 @@ class TestMessagingReportsApi(unittest.TestCase):
         Test case for get_delivery_reports_summary
 
         Returns a summarised report of delivery reports
+        """
+        pass
+
+    def test_get_metadata_keys(self):
+        """
+        Test case for get_metadata_keys
+
+        Returns a list of metadata keys
         """
         pass
 
@@ -86,6 +118,54 @@ class TestMessagingReportsApi(unittest.TestCase):
         Test case for get_sent_messages_summary
 
         Returns a summarised report of messages sent
+        """
+        pass
+
+    def test_submit_async_delivery_reports_detail(self):
+        """
+        Test case for submit_async_delivery_reports_detail
+
+        Submits a request to generate an async detail report
+        """
+        pass
+
+    def test_submit_delivery_reports_summary(self):
+        """
+        Test case for submit_delivery_reports_summary
+
+        Submits a summarised report of delivery reports
+        """
+        pass
+
+    def test_submit_received_messages_detail(self):
+        """
+        Test case for submit_received_messages_detail
+
+        Submits a request to generate an async detail report
+        """
+        pass
+
+    def test_submit_received_messages_summary(self):
+        """
+        Test case for submit_received_messages_summary
+
+        Submits a summarised report of received messages
+        """
+        pass
+
+    def test_submit_sent_messages_detail(self):
+        """
+        Test case for submit_sent_messages_detail
+
+        Submits a request to generate an async detail report
+        """
+        pass
+
+    def test_submit_sent_messages_summary(self):
+        """
+        Test case for submit_sent_messages_summary
+
+        Submits a summarised report of sent messages
         """
         pass
 

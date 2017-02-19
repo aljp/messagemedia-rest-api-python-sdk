@@ -30,7 +30,7 @@ class ReportingDetailPropertiesFilters(object):
     """
     Do not edit the class manually.
     """
-    def __init__(self, delivery_report=None, destination_address_country=None, destination_address=None, message_format=None, metadata_key=None, metadata_value=None, source_address_country=None, source_address=None, status_code=None, status=None, action=None):
+    def __init__(self, delivery_report=None, destination_address_country=None, destination_address=None, message_format=None, metadata_key=None, metadata_value=None, source_address_country=None, source_address=None, status_code=None, status=None, action=None, accounts=None):
         """
         ReportingDetailPropertiesFilters - a model
 
@@ -50,7 +50,8 @@ class ReportingDetailPropertiesFilters(object):
             'source_address': 'str',
             'status_code': 'str',
             'status': 'str',
-            'action': 'str'
+            'action': 'str',
+            'accounts': 'list[str]'
         }
 
         self.attribute_map = {
@@ -64,7 +65,8 @@ class ReportingDetailPropertiesFilters(object):
             'source_address': 'source_address',
             'status_code': 'status_code',
             'status': 'status',
-            'action': 'action'
+            'action': 'action',
+            'accounts': 'accounts'
         }
 
         self._delivery_report = delivery_report
@@ -78,6 +80,7 @@ class ReportingDetailPropertiesFilters(object):
         self._status_code = status_code
         self._status = status
         self._action = action
+        self._accounts = accounts
 
     @property
     def delivery_report(self):
@@ -331,6 +334,29 @@ class ReportingDetailPropertiesFilters(object):
         """
 
         self._action = action
+
+    @property
+    def accounts(self):
+        """
+        Gets the accounts of this ReportingDetailPropertiesFilters.
+        List of accounts that were used to generate this report
+
+        :return: The accounts of this ReportingDetailPropertiesFilters.
+        :rtype: list[str]
+        """
+        return self._accounts
+
+    @accounts.setter
+    def accounts(self, accounts):
+        """
+        Sets the accounts of this ReportingDetailPropertiesFilters.
+        List of accounts that were used to generate this report
+
+        :param accounts: The accounts of this ReportingDetailPropertiesFilters.
+        :type: list[str]
+        """
+
+        self._accounts = accounts
 
     def to_dict(self):
         """
